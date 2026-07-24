@@ -1,0 +1,238 @@
+train_number,train_name,day,stop_sequence,station_code,station_name,arrival,departure
+12301,Howrah Rajdhani Express,1,1,HWH,Howrah Junction,08:10:00,08:20:00
+12301,Howrah Rajdhani Express,1,2,MGS,Mughalsarai (DDU) Jn,20:15:00,20:25:00
+12301,Howrah Rajdhani Express,2,3,LKO,Lucknow NR,01:43:00,01:58:00
+12301,Howrah Rajdhani Express,2,4,NDLS,New Delhi,10:11:00,10:21:00
+12302,New Delhi Rajdhani Express,1,1,NDLS,New Delhi,22:05:00,22:15:00
+12302,New Delhi Rajdhani Express,2,2,LKO,Lucknow NR,06:35:00,06:45:00
+12302,New Delhi Rajdhani Express,2,3,MGS,Mughalsarai (DDU) Jn,12:00:00,12:02:00
+12302,New Delhi Rajdhani Express,2,4,ASN,Asansol Junction,19:58:00,20:00:00
+12302,New Delhi Rajdhani Express,2,5,HWH,Howrah Junction,23:21:00,23:31:00
+12305,Howrah Rajdhani Express (via Patna),1,1,HWH,Howrah Junction,18:55:00,19:05:00
+12305,Howrah Rajdhani Express (via Patna),1,2,ASN,Asansol Junction,22:22:00,22:32:00
+12305,Howrah Rajdhani Express (via Patna),2,3,MGS,Mughalsarai (DDU) Jn,06:59:00,07:01:00
+12305,Howrah Rajdhani Express (via Patna),2,4,LKO,Lucknow NR,11:50:00,11:55:00
+12305,Howrah Rajdhani Express (via Patna),2,5,NDLS,New Delhi,20:15:00,20:25:00
+12306,New Delhi Rajdhani Express (via Patna),1,1,NDLS,New Delhi,15:35:00,15:45:00
+12306,New Delhi Rajdhani Express (via Patna),1,2,LKO,Lucknow NR,23:10:00,23:15:00
+12306,New Delhi Rajdhani Express (via Patna),2,3,MGS,Mughalsarai (DDU) Jn,04:16:00,04:31:00
+12306,New Delhi Rajdhani Express (via Patna),2,4,GAYA,Gaya Junction,08:14:00,08:34:00
+12306,New Delhi Rajdhani Express (via Patna),2,5,ASN,Asansol Junction,12:26:00,12:41:00
+12306,New Delhi Rajdhani Express (via Patna),2,6,HWH,Howrah Junction,16:28:00,16:38:00
+12261,Mumbai CSMT Duronto Express,1,1,CSMT,Mumbai CSMT,13:20:00,13:30:00
+12261,Mumbai CSMT Duronto Express,1,2,PUNE,Pune Junction,16:01:00,16:21:00
+12261,Mumbai CSMT Duronto Express,2,3,NGP,Nagpur Junction,04:45:00,05:05:00
+12261,Mumbai CSMT Duronto Express,2,4,DURG,Durg Junction,09:15:00,09:20:00
+12261,Mumbai CSMT Duronto Express,2,5,HWH,Howrah Junction,22:20:00,22:30:00
+12262,Howrah Duronto Express,1,1,HWH,Howrah Junction,09:05:00,09:15:00
+12262,Howrah Duronto Express,1,2,DURG,Durg Junction,23:15:00,23:30:00
+12262,Howrah Duronto Express,2,3,PUNE,Pune Junction,14:19:00,14:39:00
+12262,Howrah Duronto Express,2,4,CSMT,Mumbai CSMT,16:37:00,16:47:00
+12951,Mumbai Rajdhani Express,1,1,BCT,Mumbai Central,07:50:00,08:00:00
+12951,Mumbai Rajdhani Express,1,2,PUNE,Pune Junction,10:10:00,10:20:00
+12951,Mumbai Rajdhani Express,1,3,ADI,Ahmedabad Jn,19:08:00,19:18:00
+12951,Mumbai Rajdhani Express,2,4,BPL,Bhopal Junction,04:34:00,04:44:00
+12951,Mumbai Rajdhani Express,2,5,JP,Jaipur Junction,12:18:00,12:38:00
+12951,Mumbai Rajdhani Express,2,6,NDLS,New Delhi,16:51:00,17:01:00
+12952,New Delhi Rajdhani Express,1,1,NDLS,New Delhi,09:35:00,09:45:00
+12952,New Delhi Rajdhani Express,1,2,JP,Jaipur Junction,14:06:00,14:26:00
+12952,New Delhi Rajdhani Express,1,3,ADI,Ahmedabad Jn,23:38:00,23:53:00
+12952,New Delhi Rajdhani Express,2,4,PUNE,Pune Junction,11:33:00,11:43:00
+12952,New Delhi Rajdhani Express,2,5,BCT,Mumbai Central,14:02:00,14:12:00
+12621,Tamil Nadu Express,1,1,MAS,Chennai Central,07:05:00,07:15:00
+12621,Tamil Nadu Express,1,2,SC,Secunderabad Jn,16:49:00,17:09:00
+12621,Tamil Nadu Express,2,3,NGP,Nagpur Junction,00:01:00,00:16:00
+12621,Tamil Nadu Express,2,4,BPL,Bhopal Junction,04:54:00,05:14:00
+12621,Tamil Nadu Express,2,5,JP,Jaipur Junction,12:36:00,12:41:00
+12621,Tamil Nadu Express,2,6,NDLS,New Delhi,16:49:00,16:59:00
+12622,Tamil Nadu Express,1,1,NDLS,New Delhi,14:35:00,14:45:00
+12622,Tamil Nadu Express,1,2,JP,Jaipur Junction,19:24:00,19:34:00
+12622,Tamil Nadu Express,2,3,BPL,Bhopal Junction,03:53:00,03:55:00
+12622,Tamil Nadu Express,2,4,NGP,Nagpur Junction,09:21:00,09:23:00
+12622,Tamil Nadu Express,2,5,SC,Secunderabad Jn,16:40:00,16:45:00
+12622,Tamil Nadu Express,3,6,MAS,Chennai Central,04:10:00,04:20:00
+12839,Howrah Chennai Mail,1,1,HWH,Howrah Junction,07:35:00,07:45:00
+12839,Howrah Chennai Mail,1,2,BBS,Bhubaneswar,14:14:00,14:16:00
+12839,Howrah Chennai Mail,1,3,VSKP,Visakhapatnam Jn,21:15:00,21:30:00
+12839,Howrah Chennai Mail,2,4,MAS,Chennai Central,09:05:00,09:15:00
+12840,Chennai Howrah Mail,1,1,MAS,Chennai Central,12:45:00,12:55:00
+12840,Chennai Howrah Mail,1,2,VSKP,Visakhapatnam Jn,23:59:00,00:04:00
+12840,Chennai Howrah Mail,2,3,BBS,Bhubaneswar,08:20:00,08:30:00
+12840,Chennai Howrah Mail,2,4,RNC,Ranchi Junction,15:02:00,15:04:00
+12840,Chennai Howrah Mail,2,5,ASN,Asansol Junction,18:20:00,18:22:00
+12840,Chennai Howrah Mail,2,6,HWH,Howrah Junction,22:25:00,22:35:00
+12723,Telangana Express,1,1,NZM,Hazrat Nizamuddin,11:35:00,11:45:00
+12723,Telangana Express,1,2,BPL,Bhopal Junction,23:38:00,23:53:00
+12723,Telangana Express,2,3,NGP,Nagpur Junction,05:45:00,05:47:00
+12723,Telangana Express,2,4,SC,Secunderabad Jn,14:04:00,14:14:00
+12724,Telangana Express,1,1,SC,Secunderabad Jn,06:05:00,06:15:00
+12724,Telangana Express,1,2,NGP,Nagpur Junction,13:46:00,13:48:00
+12724,Telangana Express,1,3,BPL,Bhopal Junction,18:57:00,19:02:00
+12724,Telangana Express,2,4,CNB,Kanpur Central,04:24:00,04:29:00
+12724,Telangana Express,2,5,JP,Jaipur Junction,12:41:00,12:46:00
+12724,Telangana Express,2,6,NZM,Hazrat Nizamuddin,17:36:00,17:46:00
+22691,Rajdhani Express,1,1,SBC,Bengaluru City Jn,14:45:00,14:55:00
+22691,Rajdhani Express,2,2,SC,Secunderabad Jn,01:10:00,01:30:00
+22691,Rajdhani Express,2,3,BPL,Bhopal Junction,13:14:00,13:19:00
+22691,Rajdhani Express,2,4,JP,Jaipur Junction,22:31:00,22:51:00
+22691,Rajdhani Express,3,5,NDLS,New Delhi,02:45:00,02:55:00
+22692,Rajdhani Express,1,1,NDLS,New Delhi,05:50:00,06:00:00
+22692,Rajdhani Express,1,2,JP,Jaipur Junction,10:20:00,10:40:00
+22692,Rajdhani Express,1,3,BPL,Bhopal Junction,20:13:00,20:15:00
+22692,Rajdhani Express,2,4,SC,Secunderabad Jn,06:46:00,06:48:00
+22692,Rajdhani Express,2,5,SBC,Bengaluru City Jn,15:28:00,15:38:00
+12433,Chennai Rajdhani Express,1,1,NZM,Hazrat Nizamuddin,23:35:00,23:45:00
+12433,Chennai Rajdhani Express,2,2,BPL,Bhopal Junction,10:43:00,10:58:00
+12433,Chennai Rajdhani Express,2,3,NGP,Nagpur Junction,16:14:00,16:24:00
+12433,Chennai Rajdhani Express,3,4,MAS,Chennai Central,06:56:00,07:06:00
+12434,Hazrat Nizamuddin Rajdhani Express,1,1,MAS,Chennai Central,12:10:00,12:20:00
+12434,Hazrat Nizamuddin Rajdhani Express,1,2,SC,Secunderabad Jn,22:05:00,22:15:00
+12434,Hazrat Nizamuddin Rajdhani Express,2,3,NGP,Nagpur Junction,06:35:00,06:37:00
+12434,Hazrat Nizamuddin Rajdhani Express,2,4,BPL,Bhopal Junction,12:56:00,13:16:00
+12434,Hazrat Nizamuddin Rajdhani Express,2,5,JP,Jaipur Junction,20:04:00,20:09:00
+12434,Hazrat Nizamuddin Rajdhani Express,3,6,NZM,Hazrat Nizamuddin,00:17:00,00:27:00
+12295,Sanghamitra Express,1,1,SBC,Bengaluru City Jn,12:05:00,12:15:00
+12295,Sanghamitra Express,2,2,DURG,Durg Junction,06:27:00,06:47:00
+12295,Sanghamitra Express,2,3,RNC,Ranchi Junction,15:23:00,15:43:00
+12295,Sanghamitra Express,2,4,GAYA,Gaya Junction,19:22:00,19:32:00
+12295,Sanghamitra Express,2,5,PNBE,Patna Junction,20:58:00,21:08:00
+12296,Sanghamitra Express,1,1,PNBE,Patna Junction,07:55:00,08:05:00
+12296,Sanghamitra Express,1,2,GAYA,Gaya Junction,09:41:00,09:46:00
+12296,Sanghamitra Express,1,3,DURG,Durg Junction,20:51:00,21:01:00
+12296,Sanghamitra Express,2,4,SBC,Bengaluru City Jn,17:27:00,17:37:00
+12801,Purushottam Express,1,1,PNBE,Patna Junction,13:45:00,13:55:00
+12801,Purushottam Express,1,2,GAYA,Gaya Junction,15:32:00,15:34:00
+12801,Purushottam Express,2,3,LKO,Lucknow NR,00:23:00,00:25:00
+12801,Purushottam Express,2,4,CNB,Kanpur Central,02:01:00,02:11:00
+12801,Purushottam Express,2,5,NDLS,New Delhi,10:06:00,10:16:00
+12802,Purushottam Express,1,1,NDLS,New Delhi,22:30:00,22:40:00
+12802,Purushottam Express,2,2,CNB,Kanpur Central,06:29:00,06:34:00
+12802,Purushottam Express,2,3,LKO,Lucknow NR,07:57:00,08:17:00
+12802,Purushottam Express,2,4,MGS,Mughalsarai (DDU) Jn,13:22:00,13:24:00
+12802,Purushottam Express,2,5,GAYA,Gaya Junction,17:28:00,17:30:00
+12802,Purushottam Express,2,6,PNBE,Patna Junction,18:58:00,19:08:00
+12245,Yuva Express,1,1,HWH,Howrah Junction,16:05:00,16:15:00
+12245,Yuva Express,2,2,MGS,Mughalsarai (DDU) Jn,03:26:00,03:41:00
+12245,Yuva Express,2,3,LKO,Lucknow NR,08:29:00,08:34:00
+12245,Yuva Express,2,4,NDLS,New Delhi,16:09:00,16:19:00
+12246,Yuva Express,1,1,NDLS,New Delhi,05:30:00,05:40:00
+12246,Yuva Express,1,2,LKO,Lucknow NR,14:38:00,14:53:00
+12246,Yuva Express,1,3,MGS,Mughalsarai (DDU) Jn,19:58:00,20:03:00
+12246,Yuva Express,2,4,HWH,Howrah Junction,08:37:00,08:47:00
+12029,Amritsar Shatabdi Express,1,1,NDLS,New Delhi,06:30:00,06:40:00
+12029,Amritsar Shatabdi Express,1,2,ASR,Amritsar Junction,13:15:00,13:25:00
+12030,New Delhi Shatabdi Express,1,1,ASR,Amritsar Junction,14:10:00,14:20:00
+12030,New Delhi Shatabdi Express,1,2,NDLS,New Delhi,21:38:00,21:48:00
+12259,Sealdah Duronto Express,1,1,SDAH,Sealdah,10:50:00,11:00:00
+12259,Sealdah Duronto Express,1,2,MGS,Mughalsarai (DDU) Jn,22:20:00,22:22:00
+12259,Sealdah Duronto Express,2,3,LKO,Lucknow NR,02:52:00,03:12:00
+12259,Sealdah Duronto Express,2,4,NDLS,New Delhi,11:43:00,11:53:00
+12260,New Delhi Duronto Express,1,1,NDLS,New Delhi,05:10:00,05:20:00
+12260,New Delhi Duronto Express,1,2,LKO,Lucknow NR,14:31:00,14:36:00
+12260,New Delhi Duronto Express,1,3,MGS,Mughalsarai (DDU) Jn,20:03:00,20:05:00
+12260,New Delhi Duronto Express,2,4,GAYA,Gaya Junction,00:06:00,00:16:00
+12260,New Delhi Duronto Express,2,5,ASN,Asansol Junction,05:00:00,05:02:00
+12260,New Delhi Duronto Express,2,6,SDAH,Sealdah,08:43:00,08:53:00
+12221,Pune Duronto Express,1,1,PUNE,Pune Junction,17:50:00,18:00:00
+12221,Pune Duronto Express,1,2,CSMT,Mumbai CSMT,20:41:00,21:01:00
+12221,Pune Duronto Express,1,3,BCT,Mumbai Central,21:21:00,21:26:00
+12221,Pune Duronto Express,2,4,DURG,Durg Junction,14:02:00,14:12:00
+12221,Pune Duronto Express,3,5,HWH,Howrah Junction,03:58:00,04:08:00
+12222,Howrah Duronto Express,1,1,HWH,Howrah Junction,20:55:00,21:05:00
+12222,Howrah Duronto Express,2,2,DURG,Durg Junction,11:28:00,11:43:00
+12222,Howrah Duronto Express,3,3,CSMT,Mumbai CSMT,04:07:00,04:12:00
+12222,Howrah Duronto Express,3,4,PUNE,Pune Junction,06:36:00,06:46:00
+12809,Howrah Mumbai Mail (via Nagpur),1,1,HWH,Howrah Junction,23:20:00,23:30:00
+12809,Howrah Mumbai Mail (via Nagpur),2,2,ASN,Asansol Junction,03:11:00,03:13:00
+12809,Howrah Mumbai Mail (via Nagpur),2,3,DURG,Durg Junction,15:19:00,15:39:00
+12809,Howrah Mumbai Mail (via Nagpur),2,4,NGP,Nagpur Junction,19:40:00,19:55:00
+12809,Howrah Mumbai Mail (via Nagpur),3,5,PUNE,Pune Junction,07:07:00,07:22:00
+12809,Howrah Mumbai Mail (via Nagpur),3,6,CSMT,Mumbai CSMT,09:33:00,09:43:00
+12810,Mumbai Howrah Mail (via Nagpur),1,1,CSMT,Mumbai CSMT,07:20:00,07:30:00
+12810,Mumbai Howrah Mail (via Nagpur),1,2,PUNE,Pune Junction,09:53:00,10:13:00
+12810,Mumbai Howrah Mail (via Nagpur),1,3,NGP,Nagpur Junction,22:48:00,22:53:00
+12810,Mumbai Howrah Mail (via Nagpur),2,4,DURG,Durg Junction,02:47:00,02:52:00
+12810,Mumbai Howrah Mail (via Nagpur),2,5,ASN,Asansol Junction,15:11:00,15:26:00
+12810,Mumbai Howrah Mail (via Nagpur),2,6,HWH,Howrah Junction,18:57:00,19:07:00
+12869,Howrah Jammu Tawi Express,1,1,HWH,Howrah Junction,23:30:00,23:40:00
+12869,Howrah Jammu Tawi Express,2,2,ASN,Asansol Junction,03:33:00,03:48:00
+12869,Howrah Jammu Tawi Express,2,3,GAYA,Gaya Junction,08:02:00,08:04:00
+12869,Howrah Jammu Tawi Express,2,4,PNBE,Patna Junction,09:41:00,09:43:00
+12869,Howrah Jammu Tawi Express,3,5,JAT,Jammu Tawi,06:55:00,07:05:00
+12870,Jammu Tawi Howrah Express,1,1,JAT,Jammu Tawi,06:45:00,06:55:00
+12870,Jammu Tawi Howrah Express,1,2,ASR,Amritsar Junction,09:12:00,09:14:00
+12870,Jammu Tawi Howrah Express,2,3,PNBE,Patna Junction,08:55:00,09:15:00
+12870,Jammu Tawi Howrah Express,2,4,GAYA,Gaya Junction,10:47:00,11:02:00
+12870,Jammu Tawi Howrah Express,2,5,ASN,Asansol Junction,15:24:00,15:44:00
+12870,Jammu Tawi Howrah Express,2,6,HWH,Howrah Junction,19:29:00,19:39:00
+12643,Kerala Express (via Ernakulam),1,1,NZM,Hazrat Nizamuddin,20:20:00,20:30:00
+12643,Kerala Express (via Ernakulam),2,2,JP,Jaipur Junction,01:05:00,01:15:00
+12643,Kerala Express (via Ernakulam),2,3,BPL,Bhopal Junction,08:55:00,09:00:00
+12643,Kerala Express (via Ernakulam),3,4,SBC,Bengaluru City Jn,06:12:00,06:22:00
+12643,Kerala Express (via Ernakulam),3,5,ERS,Ernakulam Jn,13:24:00,13:34:00
+12644,Kerala Express,1,1,ERS,Ernakulam Jn,09:05:00,09:15:00
+12644,Kerala Express,1,2,SBC,Bengaluru City Jn,16:30:00,16:35:00
+12644,Kerala Express,2,3,SC,Secunderabad Jn,00:58:00,01:13:00
+12644,Kerala Express,2,4,BPL,Bhopal Junction,13:56:00,13:58:00
+12644,Kerala Express,2,5,JP,Jaipur Junction,22:41:00,23:01:00
+12644,Kerala Express,3,6,NZM,Hazrat Nizamuddin,02:40:00,02:50:00
+12345,Saraighat Express,1,1,HWH,Howrah Junction,20:30:00,20:40:00
+12345,Saraighat Express,2,2,ASN,Asansol Junction,00:33:00,00:48:00
+12345,Saraighat Express,2,3,PNBE,Patna Junction,05:57:00,06:12:00
+12345,Saraighat Express,2,4,GHY,Guwahati,18:52:00,19:02:00
+12346,Saraighat Express,1,1,GHY,Guwahati,20:35:00,20:45:00
+12346,Saraighat Express,2,2,ASN,Asansol Junction,07:49:00,07:51:00
+12346,Saraighat Express,2,3,PNBE,Patna Junction,13:24:00,13:39:00
+12346,Saraighat Express,2,4,HWH,Howrah Junction,22:18:00,22:28:00
+12089,Jan Shatabdi Express,1,1,HWH,Howrah Junction,16:50:00,17:00:00
+12089,Jan Shatabdi Express,1,2,ASN,Asansol Junction,20:28:00,20:30:00
+12089,Jan Shatabdi Express,2,3,BBS,Bhubaneswar,03:13:00,03:28:00
+12089,Jan Shatabdi Express,2,4,RNC,Ranchi Junction,10:14:00,10:24:00
+12090,Jan Shatabdi Express,1,1,RNC,Ranchi Junction,19:35:00,19:45:00
+12090,Jan Shatabdi Express,1,2,ASN,Asansol Junction,23:13:00,23:28:00
+12090,Jan Shatabdi Express,2,3,BBS,Bhubaneswar,07:47:00,08:02:00
+12090,Jan Shatabdi Express,2,4,HWH,Howrah Junction,14:50:00,15:00:00
+12137,Punjab Mail,1,1,CSMT,Mumbai CSMT,15:50:00,16:00:00
+12137,Punjab Mail,2,2,ADI,Ahmedabad Jn,00:32:00,00:34:00
+12137,Punjab Mail,2,3,ASR,Amritsar Junction,18:54:00,18:59:00
+12137,Punjab Mail,2,4,JAT,Jammu Tawi,21:02:00,21:12:00
+12138,Punjab Mail,1,1,JAT,Jammu Tawi,20:20:00,20:30:00
+12138,Punjab Mail,1,2,ASR,Amritsar Junction,22:37:00,22:42:00
+12138,Punjab Mail,2,3,ADI,Ahmedabad Jn,16:31:00,16:41:00
+12138,Punjab Mail,3,4,CSMT,Mumbai CSMT,02:05:00,02:15:00
+12313,Sealdah Rajdhani Express,1,1,SDAH,Sealdah,13:55:00,14:05:00
+12313,Sealdah Rajdhani Express,1,2,ASN,Asansol Junction,17:48:00,17:50:00
+12313,Sealdah Rajdhani Express,2,3,MGS,Mughalsarai (DDU) Jn,02:15:00,02:17:00
+12313,Sealdah Rajdhani Express,2,4,CNB,Kanpur Central,07:10:00,07:15:00
+12313,Sealdah Rajdhani Express,2,5,NDLS,New Delhi,12:45:00,12:55:00
+12314,New Delhi Rajdhani Express,1,1,NDLS,New Delhi,16:20:00,16:30:00
+12314,New Delhi Rajdhani Express,1,2,CNB,Kanpur Central,22:15:00,22:20:00
+12314,New Delhi Rajdhani Express,2,3,MGS,Mughalsarai (DDU) Jn,03:42:00,03:44:00
+12314,New Delhi Rajdhani Express,2,4,ASN,Asansol Junction,10:05:00,10:07:00
+12314,New Delhi Rajdhani Express,2,5,SDAH,Sealdah,13:40:00,13:50:00
+12273,Howrah - New Delhi Duronto Express,1,1,HWH,Howrah Junction,20:00:00,20:10:00
+12273,Howrah - New Delhi Duronto Express,2,2,MGS,Mughalsarai (DDU) Jn,06:30:00,06:32:00
+12273,Howrah - New Delhi Duronto Express,2,3,NDLS,New Delhi,14:50:00,15:00:00
+12274,New Delhi - Howrah Duronto Express,1,1,NDLS,New Delhi,19:05:00,19:15:00
+12274,New Delhi - Howrah Duronto Express,2,2,MGS,Mughalsarai (DDU) Jn,03:45:00,03:47:00
+12274,New Delhi - Howrah Duronto Express,2,3,HWH,Howrah Junction,13:20:00,13:30:00
+22201,Sealdah - Puri Duronto Express,1,1,SDAH,Sealdah,09:50:00,10:00:00
+22201,Sealdah - Puri Duronto Express,2,2,PURI,Puri,18:00:00,18:10:00
+22202,Puri - Sealdah Duronto Express,1,1,PURI,Puri,09:50:00,10:00:00
+22202,Puri - Sealdah Duronto Express,2,2,SDAH,Sealdah,18:00:00,18:10:00
+16318,Himsagar Express,1,1,SVDK,Shri Mata Vaishno Devi Katra,09:50:00,10:00:00
+16318,Himsagar Express,2,2,CAPE,Kanyakumari,18:00:00,18:10:00
+16317,Himsagar Express,1,1,CAPE,Kanyakumari,09:50:00,10:00:00
+16317,Himsagar Express,2,2,SVDK,Shri Mata Vaishno Devi Katra,18:00:00,18:10:00
+15906,Vivek Express,1,1,DBRG,Dibrugarh,09:50:00,10:00:00
+15906,Vivek Express,2,2,CAPE,Kanyakumari,18:00:00,18:10:00
+15905,Vivek Express,1,1,CAPE,Kanyakumari,09:50:00,10:00:00
+15905,Vivek Express,2,2,DBRG,Dibrugarh,18:00:00,18:10:00
+15636,Guwahati - Okha Dwarka Express,1,1,GHY,Guwahati,09:50:00,10:00:00
+15636,Guwahati - Okha Dwarka Express,2,2,OKHA,Okha,18:00:00,18:10:00
+15635,Okha - Guwahati Dwarka Express,1,1,OKHA,Okha,09:50:00,10:00:00
+15635,Okha - Guwahati Dwarka Express,2,2,GHY,Guwahati,18:00:00,18:10:00
+12857,Howrah - Digha Tamralipta Express,1,1,HWH,Howrah Junction,09:50:00,10:00:00
+12857,Howrah - Digha Tamralipta Express,2,2,DGHA,Digha,18:00:00,18:10:00
+12858,Digha - Howrah Tamralipta Express,1,1,DGHA,Digha,09:50:00,10:00:00
+12858,Digha - Howrah Tamralipta Express,2,2,HWH,Howrah Junction,18:00:00,18:10:00

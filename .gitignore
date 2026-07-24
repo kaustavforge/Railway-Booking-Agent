@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+
+# Environment secrets
+.env
+
+# Large data files (already migrated to Supabase)
+data/pnr_bookings.db
+data/pnr_bookings.csv
+
+# Generated PDFs
+*.pdf
+!/data/refund_cancellation_policy.pdf
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

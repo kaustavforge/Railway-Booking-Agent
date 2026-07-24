@@ -1,0 +1,57 @@
+train_number,train_name,source_code,destination_code,zone,classes_available,days_of_run,avg_delay_minutes
+12301,Howrah Rajdhani Express,HWH,NDLS,ER,"1A,2A,3A","Sun,Tue,Fri",19
+12302,New Delhi Rajdhani Express,NDLS,HWH,ER,"1A,2A,3A",Daily,12
+12305,Howrah Rajdhani Express (via Patna),HWH,NDLS,ER,"1A,2A,3A",Daily,11
+12306,New Delhi Rajdhani Express (via Patna),NDLS,HWH,ER,"1A,2A,3A","Sun,Tue,Fri",11
+12261,Mumbai CSMT Duronto Express,CSMT,HWH,SER,"1A,2A,3A","Tue,Thu,Sat,Sun",37
+12262,Howrah Duronto Express,HWH,CSMT,SER,"1A,2A,3A","Mon,Wed,Fri",23
+12951,Mumbai Rajdhani Express,BCT,NDLS,WR,"1A,2A,3A","Mon,Wed,Fri",9
+12952,New Delhi Rajdhani Express,NDLS,BCT,WR,"1A,2A,3A","Mon,Wed,Fri",20
+12621,Tamil Nadu Express,MAS,NDLS,SR,"2A,3A,SL","Sun,Tue,Fri",16
+12622,Tamil Nadu Express,NDLS,MAS,SR,"2A,3A,SL",Daily,2
+12839,Howrah Chennai Mail,HWH,MAS,SER,"2A,3A,SL","Sun,Tue,Fri",5
+12840,Chennai Howrah Mail,MAS,HWH,SER,"2A,3A,SL","Sun,Tue,Fri",17
+12723,Telangana Express,NZM,SC,SCR,"2A,3A,SL","Wed,Sat",35
+12724,Telangana Express,SC,NZM,SCR,"2A,3A,SL",Daily,11
+22691,Rajdhani Express,SBC,NDLS,SWR,"1A,2A,3A","Wed,Sat",8
+22692,Rajdhani Express,NDLS,SBC,SWR,"1A,2A,3A","Mon,Thu",15
+12433,Chennai Rajdhani Express,NZM,MAS,NR,"1A,2A,3A",Daily,8
+12434,Hazrat Nizamuddin Rajdhani Express,MAS,NZM,NR,"1A,2A,3A",Daily,11
+12295,Sanghamitra Express,SBC,PNBE,SWR,"2A,3A,SL",Daily,13
+12296,Sanghamitra Express,PNBE,SBC,SWR,"2A,3A,SL","Mon,Wed,Fri",5
+12801,Purushottam Express,PNBE,NDLS,ECR,"2A,3A,SL","Mon,Wed,Fri",24
+12802,Purushottam Express,NDLS,PNBE,ECR,"2A,3A,SL","Wed,Sat",4
+12245,Yuva Express,HWH,NDLS,ER,"3A,CC","Wed,Sat",4
+12246,Yuva Express,NDLS,HWH,ER,"3A,CC",Daily,15
+12029,Amritsar Shatabdi Express,NDLS,ASR,NR,"CC,EC","Wed,Sat",23
+12030,New Delhi Shatabdi Express,ASR,NDLS,NR,"CC,EC","Mon,Wed,Fri",15
+12259,Sealdah Duronto Express,SDAH,NDLS,ER,"1A,2A,3A","Sun,Tue,Fri",12
+12260,New Delhi Duronto Express,NDLS,SDAH,ER,"1A,2A,3A","Sun,Tue,Fri",10
+12313,Sealdah Rajdhani Express,SDAH,NDLS,ER,"1A,2A,3A",Daily,14
+12314,New Delhi Rajdhani Express,NDLS,SDAH,ER,"1A,2A,3A",Daily,10
+12273,Howrah - New Delhi Duronto Express,HWH,NDLS,ER,"1A,2A,3A,SL","Mon,Wed,Fri,Sat",18
+12274,New Delhi - Howrah Duronto Express,NDLS,HWH,ER,"1A,2A,3A,SL","Tue,Thu,Sun",15
+12221,Pune Duronto Express,PUNE,HWH,CR,"1A,2A,3A","Sun,Tue,Fri",9
+12222,Howrah Duronto Express,HWH,PUNE,CR,"1A,2A,3A","Wed,Sat",28
+12809,Howrah Mumbai Mail (via Nagpur),HWH,CSMT,SER,"2A,3A,SL","Mon,Thu",17
+12810,Mumbai Howrah Mail (via Nagpur),CSMT,HWH,SER,"2A,3A,SL","Mon,Wed,Fri",10
+12869,Howrah Jammu Tawi Express,HWH,JAT,SER,"2A,3A,SL","Mon,Thu",7
+12870,Jammu Tawi Howrah Express,JAT,HWH,SER,"2A,3A,SL","Wed,Sat",21
+12643,Kerala Express (via Ernakulam),NZM,ERS,NR,"2A,3A,SL","Tue,Thu,Sat,Sun",27
+12644,Kerala Express,ERS,NZM,NR,"2A,3A,SL",Daily,25
+12345,Saraighat Express,HWH,GHY,ER,"2A,3A,SL","Mon,Wed,Fri",6
+12346,Saraighat Express,GHY,HWH,ER,"2A,3A,SL","Sun,Tue,Fri",10
+12089,Jan Shatabdi Express,HWH,RNC,SER,CC,"Mon,Thu",9
+12090,Jan Shatabdi Express,RNC,HWH,SER,CC,"Tue,Thu,Sat,Sun",12
+12137,Punjab Mail,CSMT,JAT,CR,"2A,3A,SL","Tue,Thu,Sat,Sun",24
+12138,Punjab Mail,JAT,CSMT,CR,"2A,3A,SL","Mon,Wed,Fri",33
+22201,Sealdah - Puri Duronto Express,SDAH,PURI,ER,"1A,2A,3A,SL","Mon,Wed,Fri",5
+22202,Puri - Sealdah Duronto Express,PURI,SDAH,ECoR,"1A,2A,3A,SL","Tue,Thu,Sat",10
+16318,Himsagar Express,SVDK,CAPE,SR,"2A,3A,SL",Mon,25
+16317,Himsagar Express,CAPE,SVDK,SR,"2A,3A,SL",Fri,35
+15906,Vivek Express,DBRG,CAPE,NFR,"2A,3A,SL",Sat,45
+15905,Vivek Express,CAPE,DBRG,NFR,"2A,3A,SL",Thu,50
+15636,Guwahati - Okha Dwarka Express,GHY,OKHA,WR,"2A,3A,SL",Mon,30
+15635,Okha - Guwahati Dwarka Express,OKHA,GHY,WR,"2A,3A,SL",Fri,20
+12857,Howrah - Digha Tamralipta Express,HWH,DGHA,SER,"CC,2S",Daily,5
+12858,Digha - Howrah Tamralipta Express,DGHA,HWH,SER,"CC,2S",Daily,8

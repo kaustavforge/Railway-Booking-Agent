@@ -1,0 +1,31 @@
+# LangChain / LangGraph
+langchain-groq
+langgraph
+langchain-core
+langchain-community
+langchain-huggingface
+langchain-text-splitters
+langchain-pinecone
+langgraph-checkpoint-postgres
+
+# Vector & Embeddings
+pinecone
+sentence-transformers
+faiss-cpu
+
+# Database
+psycopg2-binary
+
+# PDF & Data
+reportlab
+qrcode
+pillow
+pypdf
+pandas
+
+# API
+fastapi
+uvicorn[standard]
+
+# Config
+python-dotenv

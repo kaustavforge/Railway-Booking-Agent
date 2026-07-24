@@ -1,0 +1,36 @@
+station_code,station_name,state,zone,latitude,longitude
+HWH,Howrah Junction,West Bengal,ER,22.5839,88.3428
+SDAH,Sealdah,West Bengal,ER,22.5675,88.3707
+NDLS,New Delhi,Delhi,NR,28.6431,77.2197
+NZM,Hazrat Nizamuddin,Delhi,NR,28.5877,77.2536
+CSMT,Mumbai CSMT,Maharashtra,CR,18.9398,72.8355
+BCT,Mumbai Central,Maharashtra,WR,18.9694,72.8194
+MAS,Chennai Central,Tamil Nadu,SR,13.0827,80.2707
+SBC,Bengaluru City Jn,Karnataka,SWR,12.9784,77.5714
+PUNE,Pune Junction,Maharashtra,CR,18.5286,73.8744
+ADI,Ahmedabad Jn,Gujarat,WR,23.0272,72.6014
+PNBE,Patna Junction,Bihar,ECR,25.6093,85.1376
+BBS,Bhubaneswar,Odisha,ECoR,20.27,85.841
+RNC,Ranchi Junction,Jharkhand,SER,23.3441,85.3096
+LKO,Lucknow NR,Uttar Pradesh,NR,26.8319,80.921
+CNB,Kanpur Central,Uttar Pradesh,NCR,26.4522,80.3324
+JP,Jaipur Junction,Rajasthan,NWR,26.9196,75.7878
+ASR,Amritsar Junction,Punjab,NR,31.634,74.8723
+GHY,Guwahati,Assam,NFR,26.1584,91.7458
+BPL,Bhopal Junction,Madhya Pradesh,WCR,23.2599,77.4126
+SC,Secunderabad Jn,Telangana,SCR,17.4399,78.5013
+ERS,Ernakulam Jn,Kerala,SR,9.9816,76.2999
+JAT,Jammu Tawi,Jammu & Kashmir,NR,32.6939,74.857
+DBRG,Dibrugarh,Assam,NFR,27.4728,94.912
+MDU,Madurai Junction,Tamil Nadu,SR,9.9195,78.1193
+VSKP,Visakhapatnam Jn,Andhra Pradesh,ECoR,17.7231,83.3013
+ASN,Asansol Junction,West Bengal,ER,23.6739,86.9524
+GAYA,Gaya Junction,Bihar,ECR,24.7955,84.9994
+MGS,Mughalsarai (DDU) Jn,Uttar Pradesh,ECR,25.284,83.124
+DURG,Durg Junction,Chhattisgarh,SECR,21.1904,81.2849
+NGP,Nagpur Junction,Maharashtra,CR,21.1466,79.0889
+PURI,Puri,Odisha,ECoR,19.8049,85.8179
+CAPE,Kanyakumari,Tamil Nadu,SR,8.0883,77.5385
+SVDK,Shri Mata Vaishno Devi Katra,Jammu and Kashmir,NR,32.9818,74.9318
+OKHA,Okha,Gujarat,WR,22.4633,69.0069
+DGHA,Digha,West Bengal,SER,21.6266,87.5161
