@@ -31,14 +31,9 @@ HONEST LIMITATIONS (please read before treating this as "real"):
   2. NO REAL LOGOS: the "IR" / "IRCTC" roundels are plain stylized text
      in circles, not the actual official emblems — reproducing the real
      government/IRCTC logo artwork isn't something this script does.
-  3. SINGLE PASSENGER ONLY: your bookings table stores one
-     `passenger_name` + a `num_passengers` count per PNR — it has no
-     per-passenger Age/Gender/name-list the way a real multi-passenger
-     PNR does. The Age/Gender columns are rendered as "-" placeholders
-     for this reason. If you want real multi-passenger tickets (2+
-     named passengers, each with their own age/gender/seat), that needs
-     a schema change: a separate `passengers` table keyed by
-     pnr_number. Ask if you want that built.
+  3. FAMILY BOOKINGS: a single PNR can contain comma-separated passenger
+     names, ages, genders and seat allocations. The PDF renders them as
+     individual passenger rows. This remains a demo/portfolio data model.
   4. GSTIN / Invoice number / SAC code are FABRICATED placeholder
      values in a realistic format — not a real registered GSTIN.
   5. Distance is a straight-line estimate between station coordinates,
@@ -51,6 +46,7 @@ Data files expected next to this script (same folder as railway_code_cloud.py):
     pnr_bookings.db, trains.csv, schedules.csv, stations.csv
 """
 
+import datetime
 import hashlib
 import math
 import os
@@ -73,7 +69,7 @@ from reportlab.platypus import (
     TableStyle,
 )
 
-DATA_DIR = Path(__file__).resolve().parent / "data"
+DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
 
 # ----------------------------------------------------------------------
 # Reference data (read-only) — used only to fill in fields the bookings
@@ -103,17 +99,23 @@ def _estimate_distance_km(source_code, destination_code):
 
 
 def _lookup_timing(train_number, source_code, destination_code):
-    """Returns (departure_time_str, arrival_time_str) from schedules.csv,
-    or ('-', '-') if this train/station combo isn't in the schedule data."""
+    """Return departure/arrival times plus the destination day offset.
+
+    The schedule's ``day`` field is authoritative: an arrival can be later
+    on the clock but still occur on day two (for example 11:00 -> 11:43).
+    """
     stops = _schedules_df[_schedules_df["train_number"] == int(train_number)]
     dep_row = stops[stops["station_code"] == source_code]
     arr_row = stops[stops["station_code"] == destination_code]
     departure = dep_row.iloc[0]["departure"] if not dep_row.empty and pd.notna(dep_row.iloc[0]["departure"]) else "-"
     arrival = arr_row.iloc[0]["arrival"] if not arr_row.empty and pd.notna(arr_row.iloc[0]["arrival"]) else "-"
+    day_offset = None
+    if not dep_row.empty and not arr_row.empty:
+        day_offset = max(0, int(arr_row.iloc[0]["day"]) - int(dep_row.iloc[0]["day"]))
     # HH:MM:SS -> HH:MM for display
     departure = departure[:5] if departure != "-" else departure
     arrival = arrival[:5] if arrival != "-" else arrival
-    return departure, arrival
+    return departure, arrival, day_offset
 
 
 def fetch_booking_for_pdf(pnr: str, bookings_conn=None) -> dict:
@@ -123,7 +125,7 @@ def fetch_booking_for_pdf(pnr: str, bookings_conn=None) -> dict:
     and maps everything to the dict format generate_irctc_ticket_pdf expects.
     """
     if bookings_conn is None:
-        from railway_code_cloud import bookings_conn
+        from app.database.connection import bookings_conn
 
     cur = bookings_conn.execute(
         "SELECT * FROM bookings WHERE pnr_number = ?", (pnr,)
@@ -137,7 +139,7 @@ def fetch_booking_for_pdf(pnr: str, bookings_conn=None) -> dict:
     cols = [d[0] for d in cur.description]
     row = dict(zip(cols, raw_row))
 
-    departure_time, arrival_time = _lookup_timing(
+    departure_time, arrival_time, arrival_day_offset = _lookup_timing(
         row["train_number"], row["source_code"], row["destination_code"]
     )
     distance_km = _estimate_distance_km(row["source_code"], row["destination_code"])
@@ -156,6 +158,7 @@ def fetch_booking_for_pdf(pnr: str, bookings_conn=None) -> dict:
         "journey_date": row["journey_date"],
         "departure_time": departure_time,
         "arrival_time": arrival_time,
+        "arrival_day_offset": arrival_day_offset,
         "distance_km": distance_km,
         "class": row["class"],
         "booking_status": row["booking_status"],
@@ -320,9 +323,33 @@ def generate_irctc_ticket_pdf(data: dict, output_pdf_path: str = "ticket.pdf"):
     source_name = data.get("source_name", "")
     destination = data.get("destination", "-")
     destination_name = data.get("destination_name", "")
-    journey_date = data.get("journey_date", "-")
-    departure_time = data.get("departure_time", "-")
-    arrival_time = data.get("arrival_time", "-")
+    raw_jd = data.get("journey_date", "-")
+    if hasattr(raw_jd, "strftime"):
+        journey_date = raw_jd.strftime("%Y-%m-%d")
+    else:
+        journey_date = str(raw_jd)
+
+    departure_time = str(data.get("departure_time", "-"))
+    arrival_time = str(data.get("arrival_time", "-"))
+    # The schedule day offset handles overnight routes correctly even when the
+    # arrival clock time is later than the departure clock time.
+    arrival_date = data.get("arrival_date")
+    if not arrival_date:
+        arrival_date = journey_date
+        try:
+            schedule_offset = data.get("arrival_day_offset")
+            if schedule_offset is not None and journey_date != "-":
+                j_dt = datetime.datetime.strptime(journey_date, "%Y-%m-%d")
+                arrival_date = (j_dt + datetime.timedelta(days=int(schedule_offset))).strftime("%Y-%m-%d")
+            elif departure_time != "-" and arrival_time != "-" and journey_date != "-":
+                dep_h, dep_m = map(int, departure_time.split(":")[:2])
+                arr_h, arr_m = map(int, arrival_time.split(":")[:2])
+                if (arr_h * 60 + arr_m) < (dep_h * 60 + dep_m):
+                    j_dt = datetime.datetime.strptime(journey_date, "%Y-%m-%d")
+                    arrival_date = (j_dt + datetime.timedelta(days=1)).strftime("%Y-%m-%d")
+        except Exception as err:
+            print("Arrival date calc error:", err)
+            arrival_date = journey_date
 
     route_cells = [
         [
@@ -338,7 +365,7 @@ def generate_irctc_ticket_pdf(data: dict, output_pdf_path: str = "ticket.pdf"):
         [
             Paragraph(f"Start Date* {journey_date}", route_style),
             Paragraph(f"Departure* {departure_time} {journey_date}", route_style),
-            Paragraph(f"Arrival* {arrival_time} {journey_date}", route_style),
+            Paragraph(f"Arrival* {arrival_time} {arrival_date}", route_style),
         ],
     ]
     t_route = Table(route_cells, colWidths=[170, 170, 170])
@@ -385,22 +412,35 @@ def generate_irctc_ticket_pdf(data: dict, output_pdf_path: str = "ticket.pdf"):
         Paragraph("Age", table_header), Paragraph("Gender", table_header),
         Paragraph("Booking Status", table_header), Paragraph("Current Status", table_header),
     ]
-    # NOTE: this schema stores one passenger_name + a num_passengers COUNT,
-    # not a per-passenger list — so only row 1 has real data. Age/Gender are
-    # "-" because that data doesn't exist yet (see HONEST LIMITATIONS at top).
-    pass_row = [
-        Paragraph("1", cell_style),
-        Paragraph(str(data.get("passenger_name")), cell_style),
-        Paragraph(str(data.get("age", "-")), cell_style),
-        Paragraph(str(data.get("gender", "-")), cell_style),
-        Paragraph(str(data.get("booking_status")), cell_style),
-        Paragraph(str(data.get("current_status")), cell_style),
-    ]
+    raw_names = str(data.get("passenger_name") or "Passenger")
+    names = [n.strip() for n in raw_names.split(",") if n.strip()]
+    if not names:
+        names = ["Passenger"]
+
+    raw_ages = str(data.get("age") if data.get("age") is not None else "-")
+    ages = [a.strip() for a in raw_ages.split(",") if a.strip()]
+
+    raw_genders = str(data.get("gender") if data.get("gender") is not None else "-")
+    genders = [g.strip() for g in raw_genders.split(",") if g.strip()]
+
+    pass_rows = [pass_headers]
+    for idx, name in enumerate(names, 1):
+        age_val = ages[idx - 1] if idx - 1 < len(ages) else (ages[0] if ages else "-")
+        gender_val = genders[idx - 1] if idx - 1 < len(genders) else (genders[0] if genders else "-")
+        pass_rows.append([
+            Paragraph(str(idx), cell_style),
+            Paragraph(name, cell_style),
+            Paragraph(str(age_val), cell_style),
+            Paragraph(str(gender_val), cell_style),
+            Paragraph(str(data.get("booking_status")), cell_style),
+            Paragraph(str(data.get("current_status")), cell_style),
+        ])
+
     seat_line = Paragraph(
         f"Coach/Seat: {data.get('coach')} / {data.get('seat')} ({data.get('berth_type')})",
         small_gray,
     )
-    t_pass = Table([pass_headers, pass_row], colWidths=[35, 150, 40, 55, 95, 95])
+    t_pass = Table(pass_rows, colWidths=[35, 150, 40, 55, 95, 95])
     t_pass.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#003366")),
         ("BOX", (0, 0), (-1, -1), 1, colors.HexColor("#003366")),
