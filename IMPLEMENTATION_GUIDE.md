@@ -59,7 +59,7 @@ Create:
 Add `.env.example`:
 
 ```env
-DATABASE_URL=
+DATABASE_URL=your_supabase_session_pooler_connection_string
 GROQ_API_KEY=
 PINECONE_API_KEY=
 SUPABASE_URL=
@@ -99,7 +99,7 @@ Follow the setup order below. The optional SQLite import must happen before the 
 ### Supabase project setup
 
 1. Create a project at [supabase.com](https://supabase.com).
-2. Open **Project Settings → Database** and copy the PostgreSQL connection string. Put it in the backend `.env` as `DATABASE_URL`.
+2. Open **Connect → Database** and choose **Session pooler**. Copy the PostgreSQL connection string and put it in the backend `.env` as `DATABASE_URL`. The session pooler is recommended for Render because it provides an IPv4 connection path; the direct `db.<project>.supabase.co` host can fail on IPv6-unavailable services.
 3. Open **SQL Editor** and run `supabase_chat_schema.sql` once.
 4. If you have `pnr_bookings.db`, run `scripts/migrate_to_supabase.py` from the project root. If you do not have an old SQLite database, run the script anyway to create an empty base `bookings` table, or create that base table separately.
 5. Run `supabase_family_booking_migration.sql` once. This adds the current family-booking fields and authenticated `user_id` ownership column.
@@ -112,6 +112,8 @@ Follow the setup order below. The optional SQLite import must happen before the 
 
 7. Do not upload a local SQLite database file to Supabase. The Python migration reads it and copies its rows into PostgreSQL; the `.db` file itself is not uploaded.
 8. If the project contains local CSV/reference data, keep those files in the repository under `data/`; they are not database migrations.
+
+Keep the completed connection string private. URL-encode special characters in the database password, use the same pooler URL in Render’s `DATABASE_URL`, and rotate the database password if it has been exposed.
 
 ### Supabase authentication setup
 

@@ -132,7 +132,7 @@ pip install -r requirements.txt
 Create `.env` in the project root. Use the variable names below and keep this file private:
 
 ```env
-DATABASE_URL=your_supabase_postgres_connection_string
+DATABASE_URL=your_supabase_session_pooler_connection_string
 GROQ_API_KEY=your_groq_api_key
 PINECONE_API_KEY=your_pinecone_api_key
 SUPABASE_URL=https://your-project.supabase.co
@@ -149,6 +149,8 @@ uvicorn app.api.main:app --reload --port 8000
 Open the API documentation at [http://localhost:8000/docs](http://localhost:8000/docs).
 
 For the frontend, serve the `frontend` folder with a local static server and open its URL. Update `frontend/js/config.js` for the local API URL when needed.
+
+For Render or other IPv4-only hosts, use Supabase **Connect → Database → Session pooler** for `DATABASE_URL` rather than the direct `db.<project>.supabase.co` connection. URL-encode special characters in the database password and never commit or share the completed connection string.
 
 ## Supabase setup
 
