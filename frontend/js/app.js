@@ -43,10 +43,9 @@ const sendBtn = document.getElementById('send-btn');
 const sendIcon = document.getElementById('send-icon');
 const chatContainer = document.getElementById('chat-container');
 
-// Allow long messages to wrap naturally in the composer. Enter creates a new
-// line; Ctrl/Cmd+Enter submits the message.
+// ChatGPT-style composer: Enter submits; Shift+Enter creates a new line.
 chatInput.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
+    if (event.key === 'Enter' && !event.shiftKey) {
         event.preventDefault();
         chatForm.requestSubmit();
     }
@@ -394,6 +393,7 @@ async function renderTicketCard(pnr, containerEl) {
     if (!containerEl) return;
     let d = null;
     try {
+        if (window.railbotAuthReady) await window.railbotAuthReady;
         const token = window.railbotAccessToken ? await window.railbotAccessToken() : null;
         const res = await fetch(`${API_BASE}/api/pnr-details/${pnr}`, {
             headers: token ? { Authorization: `Bearer ${token}` } : {}
