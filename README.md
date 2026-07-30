@@ -83,7 +83,8 @@ flowchart LR
 - Supabase Auth for accounts and sessions
 - Supabase PostgreSQL for conversations, messages, and bookings
 - Pinecone for policy-document retrieval
-- Sentence Transformers and FAISS for embedding/local retrieval support
+- FastEmbed with ONNX CPU inference for lightweight policy embeddings
+- FAISS for optional local retrieval support
 - CSV/reference data for trains, schedules, and stations
 
 ## Project structure
@@ -158,6 +159,18 @@ Run these SQL files once in the Supabase SQL Editor:
 
 Enable **Email** under Supabase Authentication → Sign In / Providers. Never put a Supabase secret/service-role key in the frontend.
 
+## Policy RAG embeddings
+
+Policy retrieval uses `FastEmbedEmbeddings` with `BAAI/bge-small-en-v1.5`. It produces 384-dimensional vectors while avoiding the heavier PyTorch/Sentence Transformers runtime.
+
+After changing embedding models, recreate and re-index the dedicated Pinecone policy index:
+
+```bash
+python scripts/reindex_policies_fastembed.py --reset
+```
+
+The script targets `railway-refund-policy`, recreates that dedicated index, and uploads the policy PDF chunks. Do not use it for an index containing unrelated vectors. The current backend test retrieved two relevant policy chunks from six indexed vectors.
+
 ## Deployment overview
 
 1. Push the repository to GitHub.
@@ -169,7 +182,7 @@ Enable **Email** under Supabase Authentication → Sign In / Providers. Never pu
    ```
 
 3. Add backend secrets and `FRONTEND_ORIGINS` in Render Environment Variables.
-4. Set `window.RAILBOT_API_BASE` in `frontend/js/config.js` to the Render URL.
+4. Set `PYTHON_VERSION=3.11.11` in Render and set `window.RAILBOT_API_BASE` in `frontend/js/config.js` to the Render URL.
 5. Deploy the `frontend` directory as a static project on Vercel.
 6. Replace `FRONTEND_ORIGINS` with the final Vercel URL and redeploy Render.
 

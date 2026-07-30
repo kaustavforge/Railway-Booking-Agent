@@ -179,9 +179,19 @@ Create:
 
 - `data/policies/` — railway policy documents
 - `app/services/retrieval.py` — chunking, embeddings, and vector search
-- `scripts/ingest_policies.py` — one-time ingestion into Pinecone
+- `scripts/reindex_policies_fastembed.py` — explicit Pinecone reset and ingestion
 
-Test retrieval with questions such as refund rules, cancellation windows, and delay compensation. The assistant must say when a policy answer cannot be found.
+Use FastEmbed rather than the heavier local Sentence Transformers/PyTorch stack. `app/config/settings.py` uses `BAAI/bge-small-en-v1.5`, which produces 384-dimensional vectors matching the dedicated Pinecone index. The dependency files include `fastembed` and no longer require `sentence-transformers`.
+
+After changing embedding models, recreate and re-index the dedicated policy index:
+
+```bash
+python scripts/reindex_policies_fastembed.py --reset
+```
+
+This command is intentionally destructive for `railway-refund-policy`; never point it at an index containing unrelated data.
+
+Test retrieval with questions such as refund rules, cancellation windows, and delay compensation. The assistant must say when a policy answer cannot be found. The current backend test retrieved two relevant chunks from six indexed policy vectors.
 
 ## Phase 7 — Build the LangGraph agent
 
@@ -288,7 +298,7 @@ SUPABASE_ANON_KEY
 FRONTEND_ORIGINS
 ```
 
-Initially set `FRONTEND_ORIGINS` to your local frontend origin if needed. Verify the deployed API at `/docs`.
+Initially set `FRONTEND_ORIGINS` to your local frontend origin if needed. Set `PYTHON_VERSION=3.11.11` in Render and verify the deployed API at `/docs`.
 
 ## Phase 13 — Deploy the frontend to Vercel
 

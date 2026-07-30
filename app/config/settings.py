@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 from pinecone import Pinecone, ServerlessSpec
 from langchain_pinecone import Pinecone as PineconeVectorStore
 
@@ -77,8 +77,10 @@ if index_name not in pc.list_indexes().names():
         time.sleep(1)
 
 pinecone_index = pc.Index(index_name)
-embedding_model = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
+# FastEmbed uses lightweight ONNX CPU inference instead of loading PyTorch.
+# BGE-small produces 384-dimensional vectors, matching the Pinecone index.
+embedding_model = FastEmbedEmbeddings(
+    model_name="BAAI/bge-small-en-v1.5"
 )
 policy_vectorstore = PineconeVectorStore(
     index=pinecone_index, embedding=embedding_model
