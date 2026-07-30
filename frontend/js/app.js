@@ -392,24 +392,46 @@ async function downloadTicket(event, pnr) {
 async function renderTicketCard(pnr, containerEl) {
     if (!containerEl) return;
     let d = null;
-    try {
-        if (window.railbotAuthReady) await window.railbotAuthReady;
-        const token = window.railbotAccessToken ? await window.railbotAccessToken() : null;
-        const res = await fetch(`${API_BASE}/api/pnr-details/${pnr}`, {
-            headers: token ? { Authorization: `Bearer ${token}` } : {}
-        });
-        if (!res.ok) return; // Do NOT render dummy card if PNR is invalid or deleted!
-        const json = await res.json();
-        // Accept the documented envelope and tolerate a direct object from a
-        // proxy/cache so the card is not silently omitted in production.
-        d = json.data || (json.pnr_number ? json : null);
-    } catch(e) {
-        console.error('Could not load ticket card:', e);
-        return;
+
+    // Retry once on auth/network errors — the typewriter animation delay
+    // can cause the Supabase token to go stale in production.
+    for (let attempt = 1; attempt <= 2; attempt++) {
+        try {
+            let headers = {};
+            if (window.railbotAuthReady) {
+                await window.railbotAuthReady;
+                const token = window.railbotAccessToken ? await window.railbotAccessToken() : null;
+                if (token) headers.Authorization = `Bearer ${token}`;
+            }
+            console.log(`[TicketCard] Attempt ${attempt}: GET /api/pnr-details/${pnr}`);
+            // Use nativeFetch to bypass the global fetch() wrapper and avoid
+            // double token injection that can cause auth race conditions.
+            const res = await nativeFetch(`${API_BASE}/api/pnr-details/${pnr}`, { headers });
+            console.log(`[TicketCard] Response: ${res.status} ${res.statusText}`);
+            if (res.status === 401 && attempt < 2) {
+                console.warn('[TicketCard] Auth failed, retrying with fresh token...');
+                await new Promise(r => setTimeout(r, 500));
+                continue;
+            }
+            if (!res.ok) return; // Do NOT render dummy card if PNR is invalid or deleted!
+            const json = await res.json();
+            // Accept the documented envelope and tolerate a direct object from a
+            // proxy/cache so the card is not silently omitted in production.
+            d = json.data || (json.pnr_number ? json : null);
+            console.log(`[TicketCard] Data loaded: ${!!d}`);
+            break;
+        } catch(e) {
+            console.error(`[TicketCard] Attempt ${attempt} error:`, e);
+            if (attempt < 2) {
+                await new Promise(r => setTimeout(r, 500));
+                continue;
+            }
+            return;
+        }
     }
 
     if (!d) {
-        console.warn('PNR details response did not contain booking data:', pnr);
+        console.warn('[TicketCard] No booking data in response for PNR:', pnr);
         return;
     }
 
@@ -488,7 +510,9 @@ async function renderTicketCard(pnr, containerEl) {
             </div>
         </div>
     `;
+    console.log('[TicketCard] Injecting card HTML, length:', html.length);
     containerEl.innerHTML = html;
+    console.log('[TicketCard] ✓ Card rendered for PNR:', d.pnr || pnr);
     scrollToBottom();
 }
 
@@ -497,6 +521,7 @@ async function typeWriterAgentBubble(fullText) {
     div.className = 'flex items-start gap-sm mt-4';
     
     const pnrMatch = fullText.match(/\b\d{10}\b/);
+    console.log('[TypeWriter] PNR detected:', pnrMatch ? pnrMatch[0] : 'none');
 
     div.innerHTML = `
         <div class="w-8 h-8 rounded-full shrink-0 flex items-center justify-center border-secondary-container/50 overflow-hidden"><img alt="RailBot AI" class="w-full h-full object-cover" src="assets/logo-of-AI.png"/></div>
@@ -527,6 +552,7 @@ async function typeWriterAgentBubble(fullText) {
     textEl.innerHTML = formatMessageText(fullText);
 
     if (pnrMatch) {
+        console.log('[TypeWriter] Rendering ticket card, PNR:', pnrMatch[0], 'container:', !!ticketContainer);
         renderTicketCard(pnrMatch[0], ticketContainer);
     }
     scrollToBottom();
