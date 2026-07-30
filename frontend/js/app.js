@@ -400,14 +400,18 @@ async function renderTicketCard(pnr, containerEl) {
         });
         if (!res.ok) return; // Do NOT render dummy card if PNR is invalid or deleted!
         const json = await res.json();
-        if (json.data) {
-            d = json.data;
-        }
+        // Accept the documented envelope and tolerate a direct object from a
+        // proxy/cache so the card is not silently omitted in production.
+        d = json.data || (json.pnr_number ? json : null);
     } catch(e) {
+        console.error('Could not load ticket card:', e);
         return;
     }
 
-    if (!d) return;
+    if (!d) {
+        console.warn('PNR details response did not contain booking data:', pnr);
+        return;
+    }
 
     let rawStatus = (d.current_status || d.booking_status || 'CONFIRMED').toUpperCase();
     if (rawStatus === 'CNF') rawStatus = 'CONFIRMED';
