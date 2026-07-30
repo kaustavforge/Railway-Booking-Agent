@@ -86,6 +86,9 @@ def chat_endpoint(request: ChatRequest, user_id: str = Depends(current_user_id))
         bookings_conn.execute("INSERT INTO chat_messages (conversation_id, role, content) SELECT id, %s, %s FROM conversations WHERE langgraph_thread_id=%s", ("user", request.message, request.thread_id))
         bookings_conn.execute("INSERT INTO chat_messages (conversation_id, role, content) SELECT id, %s, %s FROM conversations WHERE langgraph_thread_id=%s", ("assistant", response, request.thread_id))
         bookings_conn.execute("UPDATE conversations SET updated_at=now() WHERE langgraph_thread_id=%s", (request.thread_id,))
+        # Persist conversation and newly attributed booking ownership before the
+        # frontend makes its follow-up PNR-details request.
+        bookings_conn.commit()
         return {"status": "success", "agent_response": response}
     except Exception as e:
         import traceback

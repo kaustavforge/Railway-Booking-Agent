@@ -318,6 +318,15 @@ Initially set `FRONTEND_ORIGINS` to your local frontend origin if needed. Set `P
 
 Finally, set Render’s `FRONTEND_ORIGINS` to the final Vercel URL and redeploy Render.
 
+### Deployment verification
+
+The deployed project currently uses:
+
+- Render API: `https://railway-booking-agent.onrender.com`
+- Vercel frontend: `https://railway-booking-agent.vercel.app`
+
+Verify the backend at `https://railway-booking-agent.onrender.com/docs`. A `404` at the backend root (`/`) is expected because no root route is defined. Verify the frontend by signing in and testing chat, history, RAG policy retrieval, PNR lookup, booking, and ticket download. Check Render logs for `Application startup complete` and `Uvicorn running` before diagnosing frontend errors.
+
 ## Final production checklist
 
 - `.env` is excluded from Git

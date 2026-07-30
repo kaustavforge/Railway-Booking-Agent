@@ -43,6 +43,19 @@ const sendBtn = document.getElementById('send-btn');
 const sendIcon = document.getElementById('send-icon');
 const chatContainer = document.getElementById('chat-container');
 
+// Allow long messages to wrap naturally in the composer. Enter creates a new
+// line; Ctrl/Cmd+Enter submits the message.
+chatInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
+        event.preventDefault();
+        chatForm.requestSubmit();
+    }
+});
+chatInput.addEventListener('input', () => {
+    chatInput.style.height = 'auto';
+    chatInput.style.height = `${Math.min(chatInput.scrollHeight, 128)}px`;
+});
+
 // --- Session & Recent History Manager ---
 function getSavedSessions() {
     try {

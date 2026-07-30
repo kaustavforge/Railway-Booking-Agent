@@ -190,6 +190,13 @@ The script targets `railway-refund-policy`, recreates that dedicated index, and 
 
 See [DEPLOYMENT.md](DEPLOYMENT.md) for the deployment notes.
 
+### Current deployment
+
+- FastAPI backend: `https://railway-booking-agent.onrender.com`
+- Vercel frontend: `https://railway-booking-agent.vercel.app`
+
+The Render service is configured with Python 3.11, Supabase Session Pooler connectivity, FastEmbed policy retrieval, and the Vercel origin in `FRONTEND_ORIGINS`. The backend root path may return `404` because the API does not define `/`; use `/docs` to inspect the API.
+
 ## API endpoints
 
 | Method | Endpoint | Purpose |
