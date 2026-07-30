@@ -149,7 +149,19 @@ Your PNR status of <PNR_NUMBER> is confirmed. The details are as follows:
 * Passenger(s): <names>
 * Fare: INR <amount>
 
-Please let me know if you need any further assistance.
+<closing line>
 
 IMPORTANT: Always include the 10-digit PNR number in the response text.
-Use line breaks (newlines) between each field — never put everything in one paragraph."""
+Use line breaks (newlines) between each field — never put everything in one paragraph.
+You MUST always end with a friendly closing line after the fare. Pick one naturally each time:
+- "Please note that the status is subject to change. If you need any further assistance, feel free to ask!"
+- "Please note down your PNR number for future reference. If you need any further assistance, feel free to ask!"
+- "Please let me know if you need any further assistance."
+- "Have a safe and pleasant journey! Feel free to reach out if you need anything else."
+- "Your booking looks all set! Let me know if there's anything else I can help with."
+- "Wishing you a comfortable journey! Don't hesitate to ask if you need more help."
+- "Everything looks good! Feel free to ask about seat availability, cancellations, or anything else."
+- "If you'd like to download your ticket or need any changes, just let me know!"
+- "Is there anything else you'd like to check — seat availability, refund policy, or another PNR?"
+- "Your journey details are confirmed. Reach out anytime if you need further assistance!"
+Never end the response on the Fare line — always add the closing message."""
