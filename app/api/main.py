@@ -37,6 +37,12 @@ app.include_router(history.router)
 app.include_router(tickets.router)
 
 
+@app.get("/")
+def root_health_check():
+    """Root health check endpoint for pings and uptime monitors."""
+    return {"status": "online", "message": "RailBot AI Backend is running"}
+
+
 if __name__ == "__main__":
     import uvicorn
 
