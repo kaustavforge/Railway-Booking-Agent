@@ -31,3 +31,99 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+/* ── Viewport Height Fix ─────────────────────────────────────────
+   100vh on mobile browsers includes the address bar, causing
+   content to be cut off. dvh (dynamic viewport height) shrinks
+   when the browser UI is visible, eliminating dead whitespace.
+   The first declaration is a fallback for older browsers.
+   ───────────────────────────────────────────────────────────── */
+body {
+    height: 100vh;
+    height: 100dvh;
+    /* Hide page until fonts are loaded — prevents zigzag/FOUT */
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+body.fonts-ready {
+    opacity: 1;
+}
+
+/* ── Sidebar Base ────────────────────────────────────────────── */
+.sidebar {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.main-content {
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Desktop (≥769px): Push layout ───────────────────────────── */
+@media (min-width: 769px) {
+    .sidebar {
+        transform: translateX(0);
+    }
+    .sidebar.sidebar-collapsed {
+        transform: translateX(-100%);
+    }
+    .main-content {
+        margin-left: 18rem; /* w-72 = 288px */
+    }
+    .main-content.sidebar-collapsed {
+        margin-left: 0;
+    }
+    .sidebar-overlay {
+        display: none !important;
+    }
+}
+
+/* ── Mobile (≤768px): Overlay layout ─────────────────────────── */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.sidebar-open {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* ── Sidebar Overlay ─────────────────────────────────────────── */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 40;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* ── Sidebar Toggle Button (ChatGPT style) ───────────────────── */
+.sidebar-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    color: var(--md-sys-color-on-surface, #1a1c1e);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    flex-shrink: 0;
+}
+.sidebar-toggle-btn:hover {
+    background: var(--md-sys-color-surface-container, rgba(0, 0, 0, 0.06));
+}
+.sidebar-toggle-btn:active {
+    transform: scale(0.92);
+}

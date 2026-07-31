@@ -729,8 +729,61 @@ document.addEventListener('click', async (e) => {
     }
 });
 
+// ── Sidebar Toggle ──────────────────────────────────────────────
+// Desktop (≥769px): push layout — sidebar open by default, toggle
+//                   collapses/expands it, main content shifts.
+// Mobile  (≤768px): overlay — sidebar closed by default, toggle
+//                   slides it in with a dim backdrop, tap outside to close.
+// ─────────────────────────────────────────────────────────────────
+function initSidebar() {
+    const sidebar   = document.getElementById('sidebar');
+    const main      = document.getElementById('main-content');
+    const overlay   = document.getElementById('sidebar-overlay');
+    const toggleBtn = document.getElementById('sidebar-toggle');
+    if (!sidebar || !toggleBtn) return;
+
+    const isMobile = () => window.innerWidth <= 768;
+
+    function closeMobileSidebar() {
+        sidebar.classList.remove('sidebar-open');
+        overlay.classList.remove('active');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        if (isMobile()) {
+            const opening = !sidebar.classList.contains('sidebar-open');
+            sidebar.classList.toggle('sidebar-open');
+            overlay.classList.toggle('active', opening);
+        } else {
+            sidebar.classList.toggle('sidebar-collapsed');
+            main.classList.toggle('sidebar-collapsed');
+        }
+    });
+
+    // Close mobile sidebar when tapping the dim overlay
+    overlay.addEventListener('click', closeMobileSidebar);
+
+    // Close mobile sidebar when any nav link / button inside it is tapped
+    sidebar.addEventListener('click', (e) => {
+        if (isMobile() && (e.target.closest('a') || e.target.closest('button'))) {
+            closeMobileSidebar();
+        }
+    });
+
+    // Clean up classes when the window crosses the breakpoint
+    window.addEventListener('resize', () => {
+        if (isMobile()) {
+            sidebar.classList.remove('sidebar-collapsed');
+            main.classList.remove('sidebar-collapsed');
+        } else {
+            closeMobileSidebar();
+        }
+    });
+}
+
 // Initialize the history list, but always begin on a blank new conversation.
 document.addEventListener('DOMContentLoaded', async () => {
+    initSidebar();
     await migrateLegacyChatsForCurrentAccount();
     await renderRecentHistorySidebar();
 });

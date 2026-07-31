@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html class="light" lang="en" style=""><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -176,9 +178,10 @@
         }
       }catch(_e){}</script><meta charset="utf-8"/>
 <link rel="stylesheet" href="css/styles.css">
-</head><body class="bg-background text-on-background font-body-md h-screen overflow-hidden flex">
+</head><body class="bg-background text-on-background font-body-md overflow-hidden flex">
+<script>document.fonts.ready.then(()=>document.body.classList.add('fonts-ready'));setTimeout(()=>document.body.classList.add('fonts-ready'),2000);</script>
 <!-- Left Sidebar -->
-<aside class="hidden md:flex flex-col h-full py-md w-72 fixed left-0 top-0 bg-primary-container shadow-xl shrink-0 z-10">
+<aside id="sidebar" class="sidebar flex flex-col h-full py-md w-72 fixed left-0 top-0 bg-primary-container shadow-xl shrink-0 z-50">
 <div class="px-md mb-md flex items-center gap-sm">
 <div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center shrink-0 overflow-hidden border border-secondary-container/30 shadow-sm">
 <img alt="Rail Assist AI" class="w-full h-full object-cover" src="assets/logo-of-AI.png"/>
@@ -247,13 +250,24 @@
 </a>
 </div>
 </aside>
+<!-- Sidebar Overlay (mobile) -->
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
 <!-- Main Chat Panel -->
-<main class="flex-1 ml-0 md:ml-72 flex flex-col bg-surface relative h-full">
+<main id="main-content" class="main-content flex-1 flex flex-col bg-surface relative h-full">
 <!-- Header -->
 <header class="flex items-center justify-between px-md py-4 bg-surface-container-lowest border-b border-surface-variant sticky top-0 z-10 shrink-0">
+<div class="flex items-center gap-sm">
+<button id="sidebar-toggle" class="sidebar-toggle-btn" title="Toggle sidebar" aria-label="Toggle sidebar">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z" stroke="currentColor" stroke-width="1.5"/>
+<path d="M6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h4V3H6z" fill="currentColor" opacity="0.15"/>
+<line x1="10" y1="3" x2="10" y2="21" stroke="currentColor" stroke-width="1.5"/>
+</svg>
+</button>
 <div>
 <h2 class="font-title-lg text-title-lg text-on-surface">AI Assistant session</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant">Rail Assist Engine v4.3</p>
+</div>
 </div>
 <button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded-full transition-colors">
 <span class="material-symbols-outlined">more_vert</span>
@@ -301,5 +315,5 @@
 <script src="js/config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/auth.js?v=20260729b"></script>
-<script src="js/app.js?v=20260730a"></script>
+<script src="js/app.js?v=20260731a"></script>
 </body></html>
